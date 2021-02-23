@@ -1,0 +1,20 @@
+{%extends "learning_logs/base.html"%}
+
+{%block page_header%}
+  <h3><a href="{%url 'learning_logs:topic' topic.id%}">{{topic}}</a></h3>
+{%endblock page_header%}
+
+
+{%block content%}
+
+  <div class='jumbotron'>
+    <h5 class='display-5'>新增条目：</h5>
+	<form action = "{%url 'learning_logs:new_entry' topic.id%}" method='post'>
+      {%csrf_token%}
+      {{form.as_p}}
+      <button name='submit' class='btn btn btn-primary'>新增</button>
+    </form>
+  </div>
+
+{%endblock content%}
+
